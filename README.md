@@ -26,4 +26,5 @@ Screenshot Halaman Riwayat Studi
 <img width="1365" height="618" alt="image" src="https://github.com/user-attachments/assets/8e06ad9a-407c-4437-a1a7-7d7e128cb3d5" />
 
 Screenshot Halaman Hitung IPK
-<img width="1365" height="296" alt="image" src="https://github.com/user-attachments/assets/0060f1eb-ebc6-42fc-98db-0e7c35aa011b" />
+<img width="1365" height="627" alt="image" src="https://github.com/user-attachments/assets/7aee3ddf-65c7-46f2-8559-feea612cbf14" />
+

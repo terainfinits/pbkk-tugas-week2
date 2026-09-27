@@ -7,3 +7,223 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+/* =========================================================
+   GLOBAL UTILITIES
+   (moved from inline <style> in layouts/app.blade.php)
+   ========================================================= */
+@layer utilities {
+    .bg-grid-pattern {
+        background-size: 40px 40px;
+        background-image:
+            linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    }
+
+    .text-glow {
+        text-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+    }
+
+    .box-glow {
+        box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+::-webkit-scrollbar            { width: 8px; }
+::-webkit-scrollbar-track      { background: #000000; }
+::-webkit-scrollbar-thumb      { background: #1f2937; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #374151; }
+
+/* =========================================================
+   COMPONENT CLASSES
+   ========================================================= */
+@layer components {
+
+    /* ---- Layout shell ---- */
+    .app-body {
+        @apply bg-gray-950 text-gray-300 font-sans antialiased overflow-x-hidden;
+        @apply selection:bg-emerald-500 selection:text-white;
+    }
+
+    /* ---- Navbar ---- */
+    .app-navbar {
+        @apply bg-black border-b border-gray-800 h-14 sticky top-0 z-50 shadow-lg flex items-center px-6;
+    }
+
+    .app-navbar__brand {
+        @apply text-white font-bold tracking-wide mr-8;
+    }
+
+    .app-navbar__link {
+        @apply text-gray-400 hover:text-white transition text-sm font-semibold;
+    }
+
+    /* ---- Footer ---- */
+    .app-footer {
+        @apply bg-gray-950 border-t border-gray-800 p-10 text-center text-gray-500 text-sm font-medium;
+    }
+
+    /* ---- Generic card ---- */
+    .card {
+        @apply p-6 bg-gray-950 rounded-2xl border border-gray-800;
+    }
+
+    /* ---- Member card (clickable, lifts on hover) ---- */
+    .card--member {
+        @apply cursor-pointer p-8 bg-gray-950 rounded-3xl border border-gray-800;
+        @apply hover:border-white/50 hover:-translate-y-2 transition duration-500;
+    }
+
+    /* ---- Hero glow card (home right panel) ---- */
+    .card--glow {
+        @apply relative flex items-center justify-center p-6;
+        @apply bg-gray-900/60 backdrop-blur rounded-2xl border border-gray-800;
+        @apply overflow-hidden min-h-[300px] shadow-2xl;
+    }
+
+    /* ---- Member avatar circle / initial box ---- */
+    .member-avatar {
+        @apply w-16 h-16 bg-white/10 border border-white/30 rounded-2xl;
+        @apply flex items-center justify-center text-2xl font-black text-white mb-6;
+    }
+
+    /* ---- Page section containers ---- */
+    .section-container {
+        @apply max-w-4xl mx-auto py-12 px-6;
+    }
+
+    .section-container--sm {
+        @apply max-w-2xl mx-auto py-12 px-6;
+    }
+
+    .section-container--lg {
+        @apply max-w-6xl mx-auto py-12 px-6;
+    }
+
+    /* ---- Data table cells ---- */
+    .table-head-cell {
+        @apply border border-gray-700 px-6 py-3 text-white bg-gray-900;
+    }
+
+    .table-cell {
+        @apply border border-gray-700 px-6 py-3 text-gray-300;
+    }
+
+    /* ---- Modal overlay (fullscreen backdrop) ---- */
+    .modal-overlay {
+        @apply fixed inset-0 z-[60] hidden items-center justify-center;
+        @apply bg-black/80 backdrop-blur-sm px-6;
+    }
+
+    /* ---- Modal box ---- */
+    .modal-box {
+        @apply bg-gray-950 border border-gray-800 rounded-3xl max-w-md w-full p-8 relative;
+    }
+
+    /* ---- Back link ---- */
+    .back-link {
+        @apply inline-block text-gray-400 hover:text-white transition;
+    }
+
+    /* ---- Profile data row ---- */
+    .profile-row {
+        @apply text-gray-400 mb-1;
+    }
+
+    .profile-row__label {
+        @apply font-semibold text-white;
+    }
+
+    /* ---- Code mockup wrapper ---- */
+    .mockup-shell {
+        @apply bg-[#1e1e1e] rounded-xl border border-gray-700 shadow-2xl overflow-hidden font-mono leading-loose relative flex flex-col;
+        font-size: clamp(0.75rem, 1.5vw, 1rem);
+    }
+
+    .mockup-titlebar {
+        @apply bg-[#2d2d2d] px-4 py-3 flex justify-between items-center border-b border-gray-700 shrink-0;
+    }
+
+    .mockup-dot {
+        @apply w-3 h-3 rounded-full;
+    }
+
+    .mockup-code-pane {
+        @apply p-6 text-gray-300 overflow-x-auto flex-1 min-w-0;
+    }
+
+    .mockup-chat-pane {
+        @apply w-full lg:w-80 lg:flex-none border-t lg:border-t-0 lg:border-l border-gray-700 bg-[#1e1e1e] flex flex-col text-xs font-sans shrink-0;
+    }
+
+    .mockup-chat-header {
+        @apply px-4 py-2.5 bg-[#252526] border-b border-gray-700 flex justify-between items-center text-gray-300;
+    }
+
+    .mockup-chat-messages {
+        @apply p-4 flex-1 space-y-4 overflow-y-auto text-gray-300;
+        max-height: 350px;
+    }
+
+    @media (min-width: 1024px) {
+        .mockup-chat-messages {
+            max-height: none;
+        }
+    }
+
+    .mockup-chat-footer {
+        @apply p-3 bg-[#252526] border-t border-gray-700;
+    }
+
+    .mockup-chat-input {
+        @apply bg-[#1e1e1e] border border-gray-700 rounded-md p-2 flex flex-col gap-2;
+        transition: border-color 0.15s;
+    }
+
+    .mockup-chat-input:focus-within {
+        @apply border-blue-500;
+    }
+
+    .mockup-msg-bubble {
+        @apply bg-[#2d2d2d] p-2.5 rounded-lg border border-gray-700/50 space-y-1 w-full;
+    }
+
+    .mockup-msg-bubble--agent {
+        @apply bg-[#252526] p-2.5 rounded-lg border border-gray-700/50 space-y-2 w-full;
+    }
+
+    /* ---- Agent / pitch page ---- */
+    .agent-hero {
+        @apply relative min-h-screen flex flex-col items-center justify-center pt-8 pb-32;
+        background-size: 40px 40px;
+        background-image:
+            linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    }
+
+    .agent-hero__glow {
+        @apply absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2;
+        @apply w-[800px] h-[800px] bg-emerald-500/10 blur-[150px] rounded-full pointer-events-none z-0;
+    }
+
+    .agent-hero__title {
+        @apply text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter mb-6;
+        @apply bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-500;
+    }
+
+    .agent-cta-primary {
+        @apply px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-gray-950 rounded-full font-bold text-lg transition duration-300;
+        box-shadow: 0 0 30px rgba(16, 185, 129, 0.4);
+    }
+
+    .agent-cta-secondary {
+        @apply px-8 py-4 bg-transparent hover:bg-gray-900 text-white rounded-full font-bold text-lg transition duration-300 border border-gray-700;
+    }
+
+    .agent-section {
+        @apply py-32 px-6 bg-gray-950 border-t border-gray-800 relative;
+    }
+}

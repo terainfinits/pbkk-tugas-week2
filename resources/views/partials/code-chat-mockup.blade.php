@@ -1,20 +1,29 @@
-<div class="{{ $wrapperClass ?? '' }} bg-[#1e1e1e] rounded-xl border border-gray-700 shadow-2xl overflow-hidden font-mono text-sm sm:text-base leading-loose relative flex flex-col">
+<div class="{{ $wrapperClass ?? '' }} mockup-shell">
 
-    <div class="bg-[#2d2d2d] px-4 py-3 flex justify-between items-center border-b border-gray-700 shrink-0">
+    {{-- Title bar with traffic-light dots --}}
+    <div class="mockup-titlebar">
         <div class="flex gap-2">
-            <div class="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
-            <div class="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
-            <div class="w-3 h-3 rounded-full bg-[#27c93f]"></div>
+            <div class="mockup-dot bg-[#ff5f56]"></div>
+            <div class="mockup-dot bg-[#ffbd2e]"></div>
+            <div class="mockup-dot bg-[#27c93f]"></div>
         </div>
         <div class="text-gray-400 text-xs flex gap-4">
-            <span class="flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-blue-400"></div> Arda</span>
-            <span class="flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-amber-500"></div> Aji</span>
-            <span class="flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-emerald-400"></div> Agent</span>
+            <span class="flex items-center gap-1">
+                <div class="w-2 h-2 rounded-full bg-blue-400"></div> Arda
+            </span>
+            <span class="flex items-center gap-1">
+                <div class="w-2 h-2 rounded-full bg-amber-500"></div> Aji
+            </span>
+            <span class="flex items-center gap-1">
+                <div class="w-2 h-2 rounded-full bg-emerald-400"></div> Agent
+            </span>
         </div>
     </div>
 
     <div class="flex flex-col lg:flex-row flex-1">
-        <div class="p-6 text-gray-300 overflow-x-auto flex-1 min-w-0">
+
+        {{-- Code pane --}}
+        <div class="mockup-code-pane">
             <div><span class="text-pink-400">public</span> <span class="text-blue-400">function</span> <span class="text-yellow-200">authenticate</span>(<span class="text-orange-300">Request</span> <span class="text-blue-200">$request</span>) {</div>
             <div class="pl-8 text-gray-500 italic">// Validate incoming request</div>
             <div class="pl-8"><span class="text-blue-200">$credentials</span> = <span class="text-blue-200">$request</span>-><span class="text-yellow-200">validate</span>([</div>
@@ -39,10 +48,15 @@
             <div>}</div>
         </div>
 
-        <div class="w-full lg:w-80 lg:flex-none border-t lg:border-t-0 lg:border-l border-gray-700 bg-[#1e1e1e] flex flex-col text-xs font-sans shrink-0">
-            <div class="px-4 py-2.5 bg-[#252526] border-b border-gray-700 flex justify-between items-center text-gray-300">
+        {{-- Chat pane --}}
+        <div class="mockup-chat-pane">
+
+            {{-- Chat header --}}
+            <div class="mockup-chat-header">
                 <span class="font-semibold flex items-center gap-1.5">
-                    <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
                     Chat
                 </span>
                 <div class="flex items-center gap-2 text-gray-400">
@@ -50,17 +64,19 @@
                     <button class="hover:text-white" title="Close">×</button>
                 </div>
             </div>
-            <div class="p-4 flex-1 space-y-4 overflow-y-auto max-h-[350px] lg:max-h-none text-gray-300">
+
+            {{-- Messages --}}
+            <div class="mockup-chat-messages">
                 <div class="flex gap-2 items-start">
                     <div class="w-6 h-6 rounded-full bg-blue-600 flex items-center justify-center text-white text-[10px] font-bold shrink-0">A</div>
-                    <div class="bg-[#2d2d2d] p-2.5 rounded-lg border border-gray-700/50 space-y-1 w-full">
+                    <div class="mockup-msg-bubble">
                         <p class="text-[11px] text-gray-400 font-semibold">Arda</p>
                         <p>Can we make sure the session regeneration is protected against fixation?</p>
                     </div>
                 </div>
                 <div class="flex gap-2 items-start">
                     <div class="w-6 h-6 rounded-full bg-emerald-600 flex items-center justify-center text-white text-[10px] font-bold shrink-0">AI</div>
-                    <div class="bg-[#252526] p-2.5 rounded-lg border border-gray-700/50 space-y-2 w-full">
+                    <div class="mockup-msg-bubble--agent">
                         <p class="text-[11px] text-emerald-400 font-semibold flex items-center gap-1">
                             <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span> Agent Copilot
                         </p>
@@ -68,8 +84,10 @@
                     </div>
                 </div>
             </div>
-            <div class="p-3 bg-[#252526] border-t border-gray-700">
-                <div class="bg-[#1e1e1e] border border-gray-700 rounded-md p-2 flex flex-col gap-2 focus-within:border-blue-500 transition-colors">
+
+            {{-- Input --}}
+            <div class="mockup-chat-footer">
+                <div class="mockup-chat-input">
                     <input type="text" placeholder="Ask Copilot or type @/..." class="bg-transparent text-gray-200 text-xs focus:outline-none placeholder-gray-500 font-sans" readonly />
                     <div class="flex justify-between items-center text-[10px] text-gray-400 pt-1 border-t border-gray-800">
                         <span class="flex gap-2">
@@ -80,6 +98,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>

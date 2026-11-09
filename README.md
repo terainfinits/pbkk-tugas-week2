@@ -28,3 +28,4 @@ Screenshot Halaman Riwayat Studi
 Screenshot Halaman Hitung IPK
 <img width="1365" height="627" alt="image" src="https://github.com/user-attachments/assets/7aee3ddf-65c7-46f2-8559-feea612cbf14" />
 
+Link Zoom: https://its-ac-id.zoom.us/j/93098124145?pwd=Zvla1BKb3eFnDHwHjIh4hTP3OtR6Sx.1
